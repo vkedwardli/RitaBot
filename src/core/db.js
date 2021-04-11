@@ -14,7 +14,7 @@ var dbBot2BotValue ="";
 // Database Auth Process
 // ----------------------
 
-const db = process.env.DATABASE_URL.endsWith(".db") ?
+const db = process.env.HEROKU_POSTGRESQL_PURPLE_URL.endsWith(".db") ?
    new Sequelize({
       dialect: "sqlite",
       dialectOptions: {
@@ -23,9 +23,9 @@ const db = process.env.DATABASE_URL.endsWith(".db") ?
             rejectUnauthorized: false
          }
       },
-      storage: process.env.DATABASE_URL
+      storage: process.env.HEROKU_POSTGRESQL_PURPLE_URL
    }) :
-   new Sequelize(process.env.DATABASE_URL, {
+   new Sequelize(process.env.HEROKU_POSTGRESQL_PURPLE_URL, {
       logging: console.log,
       dialectOptions: {
          ssl: {
